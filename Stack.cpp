@@ -56,9 +56,9 @@ void Stack<T>::clear () {
 
 template<typename T>
 Stack<T>::~Stack() {
-	T next;
+	
 	while (!empty()) {
-		next = pop(); // pop calls delete
+		 pop(); // pop calls delete
 	}
 }
 
@@ -80,6 +80,7 @@ Stack<T>::Stack(const Stack& stack){
   
 }
 
+//Helper function for copy
 template<typename T>
 StackFramePtr<T> Stack<T>::clone(StackFramePtr<T> source) {
   if (source == NULL){
@@ -90,7 +91,7 @@ StackFramePtr<T> Stack<T>::clone(StackFramePtr<T> source) {
 
     StackFramePtr<T> newNode = new StackFrame<T>; 
     newNode -> data = source -> data;
-    cout << "Clone ran" << endl; 
+   // cout << "Clone ran" << endl; 
     newNode -> link = source -> link;
     return newNode; 
    }
@@ -246,12 +247,14 @@ T Stack<T>::pop() {
 		}
 	}
 }
+
+
 template<typename T>
 void Stack<T>::push(T data) {
   try {
 		StackFramePtr<T> newStack = new StackFrame<T>;
 		
-    newStack->data = data;
+    newStack->data = data; // new
 		newStack->link = top;
 		top = newStack;
   
@@ -284,6 +287,8 @@ if (empty() != true){
   insertToBottom(info); // Inserts to bottom
    }
 }
+
+
 
 
 /*

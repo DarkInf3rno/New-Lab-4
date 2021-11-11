@@ -26,6 +26,37 @@ void printStack(Stack<T>& s) {
 	}
 }
 
+template<typename T>
+void printPalindrome (Stack<T>& s) {
+    T palindrome;
+    StackFramePtr<T> temp; 
+    
+  
+
+    
+  if (s.empty()) {
+   cout << "NULL "<< endl;
+   exit(1);
+  }
+  else {
+    s.reverse();
+    temp = s.peek();
+    while(temp!=NULL){
+      palindrome = temp -> data;
+      cout << palindrome; 
+      temp = temp -> link;
+    }
+    s.reverse();
+    temp = s.peek();
+    while(temp!=NULL){
+      palindrome = temp -> data;
+      cout << palindrome; 
+      temp = temp -> link;
+    }
+ 
+  }
+  }
+
 int main() { 
   // part A
 	Stack<int> sint1;
@@ -41,10 +72,6 @@ int main() {
   cout<<"Sint1 stack: "<< endl;
   printStack(sint1);
 
-
-  //sint1.clone(sint1.peek()); 
-
- 
  Stack<int> sint2;
  sint2 = sint1;
   cout <<"Sint2 stack: " <<endl; 
@@ -68,23 +95,33 @@ int main() {
   cout <<"Sdouble1 stack: " << endl;
   printStack(sdouble1);
   
+
   
   Stack<double> sdouble2(sdouble1);
   sdouble2.reverse();
-  cout <<"Sdouble2 stack: " <<endl;
-  printStack(sdouble2);
   cout <<"Top of Sdouble2 is: " << sdouble2.peek() ->data << endl;
+
 
   // Part C
   cout << "Enter a string to be reversed: " ;
   Stack<char> palindrome;
-
   string input;
-   
- // cin >> input;
-  
+  cin >> input;
+
+
+
+  for (int i = 0; i < input.length(); i++) {
+    palindrome.push(input.at(i));   
+  }
+  printPalindrome(palindrome);
   
   
 	return 0;
 
 }
+
+
+
+//Get user input for their string.
+//Push into a stack. Reverse the stack and print it.
+//Reverse the stack again and print. 

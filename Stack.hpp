@@ -29,14 +29,15 @@ namespace StackTop {
 		// returns top symbol on the stack and then removes top symbol from the stack
 		bool empty() const; // Returns true if stack is empty
     void clear(); 
-    StackFramePtr<T> clone(StackFramePtr<T> source); 
-		Stack<T>& operator=(const Stack<T>& s);
+    
+		Stack& operator=(const Stack& s);
 		void reverse();
 
     StackFrame<T> getTop(); 
     void insertToBottom(T info); // helper function
 	private:
 		StackFramePtr<T> top;
+    StackFramePtr<T> clone(StackFramePtr<T> source); 
 	};
 }
 #endif 
